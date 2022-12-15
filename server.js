@@ -27,6 +27,11 @@ io.on('connection', socket => {
       io.emit('message', "a user left the chat")
    })
 
+   // Lister for chat Message
+   socket.on('chatMessage', (msg) => {
+      io.emit('message', msg)
+   })
+
 })
 const PORT = 3000 || process.env.PORT;
 
