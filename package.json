@@ -1,0 +1,28 @@
+{
+  "name": "chatapp-weptempsreel",
+  "version": "1.0.0",
+  "description": "Tchat temps reel",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoulDevt/tchatapp-nodejs-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoulDevt/tchatapp-nodejs-express/issues"
+  },
+  "homepage": "https://github.com/SoulDevt/tchatapp-nodejs-express#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "socket.io": "^4.5.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
