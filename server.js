@@ -3,13 +3,19 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 
+const formatMessage = require('./utils/messages')
+
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server)
 
 
+
+
 // config statics folders
 app.use(express.static(path.join(__dirname, 'public')))
+
+const botName = 'ChatCord Bot';
 
 //run when a client connects
 io.on('connection', socket => {
@@ -17,19 +23,19 @@ io.on('connection', socket => {
 
 
    //Welcome current user
-   socket.emit("message", 'Welcome to Chat')
+   socket.emit("message", formatMessage(botName, 'Welcome to Chat !'))
 
    //Broadcasting when someone connects
-   socket.broadcast.emit('message', 'new user joined the chat');
+   socket.broadcast.emit('message', formatMessage(botName,'new user joined the chat'));
 
    //Runs when client disconnects
    socket.on('disconnect', () => {
-      io.emit('message', "a user left the chat")
+      io.emit('message', formatMessage(botName,"a user left the chat"));
    })
 
    // Lister for chat Message
    socket.on('chatMessage', (msg) => {
-      io.emit('message', msg)
+      io.emit('message', formatMessage('USER',msg))
    })
 
 })

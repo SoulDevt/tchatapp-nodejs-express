@@ -22,15 +22,19 @@ chatForm.addEventListener('submit', (e) => {
 
     // emit message to server
     socket.emit('chatMessage', msg)
+
+    //clean input submit
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
 })
 
 // Output message to Dom
 function outputMessage(message) {
     const div = document.createElement('div')
     div.classList.add('message');
-    div.innerHTML = `<p class="meta">Brad <span>9:12pm</span></p>
+    div.innerHTML = `<p class="meta">${message.user}<span>${message.time}</span></p>
     <p class="text">
-       ${message}
+       ${message.text}
     </p>`
 
     document.querySelector('.chat-messages').appendChild(div)
